@@ -12,7 +12,7 @@ export const initialState = {
             id: 1732957584
         }
     ],
-    editing: false
+    editing: true
 };
 
 //Todo Reducer
@@ -24,6 +24,7 @@ export const todoReducer = (state, action) => {
                 todos: action.payload
             };
         case "ADD_TODO":
+            //Return updated the list of todos after adding the new item
             return {
                 ...state,
                 todos: [

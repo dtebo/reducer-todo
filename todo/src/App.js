@@ -4,6 +4,7 @@ import './App.css';
 import { todoReducer, initialState } from './reducers/index';
 
 import TodoList from './components/todolist/TodoList';
+import TodoForm from './components/todoform/TodoForm';
 
 function App() {
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -11,10 +12,11 @@ function App() {
   return (
     <div className="App">
       <TodoList todos={state.todos} />
-      <button
-          onClick={() => dispatch({ type: "ADD_TODO" })}>
-          Add Todo
-      </button>
+      {
+        state.editing ? (
+          <TodoForm addTodoDispatch={dispatch} />
+        ) : null
+      }
     </div>
   );
 }

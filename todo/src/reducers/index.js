@@ -23,6 +23,18 @@ export const todoReducer = (state, action) => {
                 ...state,
                 todos: action.payload
             };
+        case "ADD_TODO":
+            return {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    {
+                        id: Date.now(),
+                        item: action.payload.item,
+                        completed: false
+                    }
+                ]
+            };
         default:
             return state;
     }

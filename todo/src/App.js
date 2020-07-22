@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <TodoList todos={state.todos} />
       <button
-          onClick={() => dispatch({ type: "ADD_TODO", payload: todo})}>
+          onClick={() => dispatch({ type: "ADD_TODO" })}>
           Add Todo
       </button>
     </div>

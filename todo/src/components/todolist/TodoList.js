@@ -1,24 +1,19 @@
-import React, { useEffect, useReducer } from 'react';
-
-import { todoReducer, initialState } from '../../reducers/index';
+import React, { useState, useEffect } from 'react';
 
 import Todo from './Todo';
 
 const TodoList = (props) => {
-    const [state, dispatch] = useReducer(todoReducer, initialState);
-
-    useEffect(() => {
-        dispatch({
-            type: "GET_TODOS",
-            payload: props.todos
-        });
-    }, [props.todos]);
+    const { todos } = props;
 
     return(
         <>
-            {state.todos && state.todos.map((todo) => {
-                return (<Todo todo={todo} />);
-            })}
+            {
+                todos && todos.map((todo) => {
+                    return (
+                        <Todo key={todo.id} todo={todo} />
+                    );
+                })
+            }
         </>
     );
 };

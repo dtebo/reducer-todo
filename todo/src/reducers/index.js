@@ -5,8 +5,14 @@ export const initialState = {
             item: "Test API",
             completed: false,
             id: 3892987589
+        },
+        {
+            item: "Go Shopping",
+            completed: false,
+            id: 1732957584
         }
-    ]
+    ],
+    editing: false
 };
 
 //Todo Reducer

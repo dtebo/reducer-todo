@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
+
+import { todoReducer, initialState } from '../../reducers/index';
+
+import Todo from './Todo';
 
 const TodoList = (props) => {
+    const [state, dispatch] = useReducer(todoReducer, initialState);
+
+    useEffect(() => {
+        dispatch({
+            type: "GET_TODOS",
+            payload: props.todos
+        });
+    }, [props.todos]);
+
     return(
-        <h1>List of todos...</h1>
+        <>
+            {state.todos && state.todos.map((todo) => {
+                return (<Todo todo={todo} />);
+            })}
+        </>
     );
 };
 

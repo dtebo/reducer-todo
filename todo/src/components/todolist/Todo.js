@@ -1,8 +1,13 @@
 import React from 'react';
+import { todoReducer } from '../../reducers';
 
 const Todo = (props) => {
+    const { todo } = props;
+    
     return(
-        <h1>Todo goes here...</h1>
+        <div className='todo-item'>
+            <h3>{todo.item}</h3>
+        </div>
     );
 };
 

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import * as MUI from '../../materialui/index';
 import * as FA from '../../fontawesome/index';
 
 const Todo = (props) => {
-    const { todo } = props;
+    const { todo, getTodo, dispatch } = props;
+
+    useEffect(() => {
+        getTodo(todo);
+    }, [todo]);
 
     return(
         <div className='todo-item'>
@@ -12,8 +16,24 @@ const Todo = (props) => {
                 <MUI.CardContent>
                     <MUI.CardHeader
                         className='todo-header'
-                        action={
-                            <FA.FontAwesomeIcon icon={FA.faCheck} />
+                        action={ !todo.completed ? (
+                                <FA.FontAwesomeIcon 
+                                    icon={FA.faSquare}
+                                    className='toggle-icon'
+                                    onClick={() => dispatch({ type: 'TOGGLE_COMPLETED', payload: {
+                                        ...todo,
+                                        completed: !todo.completed
+                                    } })} />
+                            ) : (
+                                <FA.FontAwesomeIcon
+                                    icon={FA.faCheckSquare}
+                                    className='toggle-icon'
+                                    onClick={() => dispatch({ type: 'TOGGLE_COMPLETED', payload: {
+                                        ...todo,
+                                        completed: !todo.completed
+                                    } })}
+                                />
+                            )
                         }
                     >
                     </MUI.CardHeader>

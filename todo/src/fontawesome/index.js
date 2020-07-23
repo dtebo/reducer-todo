@@ -3,10 +3,12 @@ import {
 } from '@fortawesome/react-fontawesome';
 
 import {
-    faCheck
+    faCheckSquare,
+    faSquare
 } from '@fortawesome/free-solid-svg-icons';
 
 export {
     FontAwesomeIcon,
-    faCheck
+    faCheckSquare,
+    faSquare
 };

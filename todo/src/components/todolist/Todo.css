@@ -11,3 +11,7 @@
 div.todo-header{
     padding: 5px;
 }
+
+.toggle-completed{
+    cursor: pointer;
+}

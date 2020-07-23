@@ -45,8 +45,8 @@ export const todoReducer = (state, action) => {
             return {
                     ...state,
                     todos: [
-                        ...state.todos.map((todo) => {
-                            return !todo.completed
+                        ...state.todos.filter((todo) => {
+                            return todo.completed !== true
                         })
                     ]
                 }

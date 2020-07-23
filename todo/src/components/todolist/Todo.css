@@ -1,9 +1,13 @@
 .todo-list{
-    margin: 20px auto;
+    margin: 0 auto;
     width: 80%;
 }
 
 .todo-item{
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 10px;
+}
+
+div.todo-header{
+    padding: 5px;
 }

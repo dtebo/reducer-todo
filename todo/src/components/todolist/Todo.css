@@ -1,0 +1,9 @@
+.todo-list{
+    margin: 20px auto;
+    width: 80%;
+}
+
+.todo-item{
+    margin-bottom: 30px;
+    padding: 20px;
+}

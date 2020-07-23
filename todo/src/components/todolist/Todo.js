@@ -8,7 +8,11 @@ const Todo = (props) => {
     return(
         <div className='todo-item'>
             <MUI.Card>
-                {todo.item}
+                <MUI.CardContent>
+                    <MUI.Typography>
+                        {todo.item}
+                    </MUI.Typography>
+                </MUI.CardContent>
             </MUI.Card>
         </div>
     );

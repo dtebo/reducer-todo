@@ -24,6 +24,7 @@ export const todoReducer = (state, action) => {
                 todos: action.payload
             };
         case "ADD_TODO":
+            console.log(action.payload);
             //Return updated the list of todos after adding the new item
             return {
                 ...state,

@@ -1,47 +1,47 @@
-import React, { Component } from 'react';
+import React, { useReducer, useState } from 'react';
 
-class TodoForm extends Component{
-    constructor(props){
-        super(props);
+import { useForm } from '../../hooks/useForm';
 
-        this.state = {
-            todo: {
-                id: new Date(),
-                item: '',
-                completed: false
-            }
-        };
-    }
+import { todoReducer, initialState } from '../../reducers/index';
 
-    handleChanges(e){
-        this.setState({
-            ...this.state.todo,
-            [e.target.name]: e.target.value
-        });
+const initialValue = {
+    id: null,
+    item: '',
+    completed: false
+};
 
-        console.log('form: ', this.state.todo);
-    }
+const TodoForm = (props) => {
+    // const [todo, setTodo] = useState(initialValue);
 
-    handleSubmit(e){
+    const [values, handleChanges, clearForm] = useForm(initialValue);
+
+    const [state, dispatch] = useReducer(todoReducer, initialState);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        this.props.addTodoDispatch({ type: 'ADD_TODO ', payload: this.state.todo});
+        dispatch({
+            type: 'ADD_TODO',
+            payload: {
+                id: Date.now(),
+                item: values.newTodoText,
+                completed: false
+            }
+        });
     }
 
-    render(){
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    className='todo-item'
-                    type='text'
-                    name='newTodoText'
-                    value={this.state.todo.item}
-                    onChange={this.handleChanges}
-                />
-                <button>Submit</button>
-            </form>
-        )
-    }
+    return(
+        <form onSubmit={(e) => handleSubmit(e)}>
+            <input
+                className='todo-item'
+                type='text'
+                name='newTodoText'
+                value={values.item}
+                onChange={(e) => handleChanges(e)}
+            />
+            <button>Submit</button>
+        </form>
+    );
 }
 
 export default TodoForm;

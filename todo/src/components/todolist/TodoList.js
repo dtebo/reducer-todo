@@ -6,8 +6,6 @@ import Todo from './Todo';
 import TodoForm from '../todoform/TodoForm';
 
 const TodoList = (props) => {
-    const { todos } = props;
-
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
     return(
@@ -21,7 +19,7 @@ const TodoList = (props) => {
             }
             {
                 state.editing ? (
-                <TodoForm />
+                <TodoForm state={state} dispatch={dispatch} />
                 ) : (
                     <button
                         onClick={() => dispatch({ type: 'TOGGLE_EDITING' })}

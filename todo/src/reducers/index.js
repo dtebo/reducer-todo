@@ -24,11 +24,11 @@ export const todoReducer = (state, action) => {
                 editing: !state.editing
             };
         case "ADD_TODO":
-            console.log(state, action.payload)
             //Return updated the list of todos after adding the new item
             return {
                 ...state,
-                todos: [...state.todos, action.payload]
+                todos: [...state.todos, action.payload],
+                editing: false //Set editing back to false so that the todo button is accessible again
             };
         default:
             return state;

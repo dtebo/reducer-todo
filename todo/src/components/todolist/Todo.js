@@ -1,10 +1,15 @@
 import React from 'react';
+
+import * as MUI from '../../materialui/index';
+
 const Todo = (props) => {
     const { todo } = props;
 
     return(
         <div className='todo-item'>
-            <h3>{todo.item}</h3>
+            <MUI.Card>
+                {todo.item}
+            </MUI.Card>
         </div>
     );
 };

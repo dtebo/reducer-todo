@@ -4,16 +4,16 @@ import { useForm } from '../../hooks/useForm';
 
 import { todoReducer, initialState } from '../../reducers/index';
 
-const initialValue = {
-    id: null,
-    item: '',
-    completed: false
-};
+// const initialValue = {
+//     item: '',
+//     completed: false,
+//     id: null
+// };
 
 const TodoForm = (props) => {
     // const [todo, setTodo] = useState(initialValue);
 
-    const [values, handleChanges, clearForm] = useForm(initialValue);
+    const [values, handleChanges, clearForm] = useForm({});
 
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
@@ -23,9 +23,9 @@ const TodoForm = (props) => {
         dispatch({
             type: 'ADD_TODO',
             payload: {
-                id: Date.now(),
-                item: values.newTodoText,
-                completed: false
+                item: values.newItem,
+                completed: false,
+                id: Date.now()
             }
         });
     }
@@ -35,7 +35,7 @@ const TodoForm = (props) => {
             <input
                 className='todo-item'
                 type='text'
-                name='newTodoText'
+                name='newItem'
                 value={values.item}
                 onChange={(e) => handleChanges(e)}
             />

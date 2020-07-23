@@ -5,6 +5,8 @@ export const useForm = (initialValues) => {
     const [values, setValues] = useState(initialState);
 
     const handleChanges = e => {
+        e.persist();
+
         setValues({
             ...values,
             [e.target.name]: e.target.value

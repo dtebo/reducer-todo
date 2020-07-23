@@ -12,30 +12,23 @@ export const initialState = {
             id: 1732957584
         }
     ],
-    editing: true
+    editing: false
 };
 
 //Todo Reducer
 export const todoReducer = (state, action) => {
     switch(action.type){
-        case "GET_TODOS":
+        case "TOGGLE_EDITING":
             return {
                 ...state,
-                todos: action.payload
+                editing: !state.editing
             };
         case "ADD_TODO":
-            console.log(action.payload);
+            console.log(state, action.payload)
             //Return updated the list of todos after adding the new item
             return {
                 ...state,
-                todos: [
-                    ...state.todos,
-                    {
-                        id: Date.now(),
-                        item: action.payload.item,
-                        completed: false
-                    }
-                ]
+                todos: [...state.todos, action.payload]
             };
         default:
             return state;

@@ -1,18 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
+
+import { todoReducer, initialState } from '../../reducers/index';
 
 import Todo from './Todo';
+import TodoForm from '../todoform/TodoForm';
 
 const TodoList = (props) => {
     const { todos } = props;
 
+    const [state, dispatch] = useReducer(todoReducer, initialState);
+
     return(
         <>
             {
-                todos && todos.map((todo) => {
+                state.todos && state.todos.map((todo) => {
                     return (
                         <Todo key={todo.id} todo={todo} />
                     );
                 })
+            }
+            {
+                state.editing ? (
+                <TodoForm />
+                ) : (
+                    <button
+                        onClick={() => dispatch({ type: 'TOGGLE_EDITING' })}
+                    >
+                        Add Todo
+                    </button>
+                )
             }
         </>
     );

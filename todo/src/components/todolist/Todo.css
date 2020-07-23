@@ -1,0 +1,17 @@
+.todo-list{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.todo-item{
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+div.todo-header{
+    padding: 5px;
+}
+
+.toggle-completed{
+    cursor: pointer;
+}
